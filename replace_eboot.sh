@@ -1,0 +1,9 @@
+#!/bin/bash
+
+NAME=cub3D_PSP
+PATH_TO_GAME=/media/$USER/disk/PSP/GAME/DEV/
+EBOOT=EBOOT.PBP
+
+set -x
+rm -f $PATH_TO_GAME$EBOOT
+cp $EBOOT $PATH_TO_GAME
