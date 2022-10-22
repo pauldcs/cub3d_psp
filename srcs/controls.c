@@ -55,13 +55,13 @@ void peek_pad(t_self *self, SceCtrlData *pad)
     (void)self;
     if (pad->Buttons)
     {
-        if (pad->Buttons & PSP_CTRL_SQUARE)     pspDebugScreenPrintf("Square pressed");
-        if (pad->Buttons & PSP_CTRL_TRIANGLE)   pspDebugScreenPrintf("Triangle pressed");
-        if (pad->Buttons & PSP_CTRL_CIRCLE)     pspDebugScreenPrintf("Circle pressed");
-        if (pad->Buttons & PSP_CTRL_CROSS)      pspDebugScreenPrintf("Cross pressed");
-        if (pad->Buttons & PSP_CTRL_UP)         pspDebugScreenPrintf("Up pressed");
-        if (pad->Buttons & PSP_CTRL_DOWN)       pspDebugScreenPrintf("Down pressed");
-        if (pad->Buttons & PSP_CTRL_LEFT)       pspDebugScreenPrintf("Left pressed");
-        if (pad->Buttons & PSP_CTRL_RIGHT)      pspDebugScreenPrintf("Right pressed");
+        if (pad->Buttons & PSP_CTRL_SQUARE)     pspDebugScreenPrintf("Square pressed\n");
+        if (pad->Buttons & PSP_CTRL_TRIANGLE)   pspDebugScreenPrintf("Triangle pressed\n");
+        if (pad->Buttons & PSP_CTRL_CIRCLE)     pspDebugScreenPrintf("Circle pressed\n");
+        if (pad->Buttons & PSP_CTRL_CROSS)      pspDebugScreenPrintf("Cross pressed\n");
+        if (pad->Buttons & PSP_CTRL_UP)         pspDebugScreenPrintf("Up pressed\n");
+        if (pad->Buttons & PSP_CTRL_DOWN)       pspDebugScreenPrintf("Down pressed\n");
+        if (pad->Buttons & PSP_CTRL_LEFT)       pspDebugScreenPrintf("Left pressed\n");
+        if (pad->Buttons & PSP_CTRL_RIGHT)      pspDebugScreenPrintf("Right pressed\n");
     }
 }   

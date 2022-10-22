@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 export PSPDEV=/usr/local/pspdev
 sudo mkdir -p $PSPDEV
 sudo chown -R $USER: $PSPDEV

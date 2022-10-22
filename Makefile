@@ -1,5 +1,4 @@
 PSP_EBOOT_TITLE := cub3D_PSP
-PSP_EBOOT_ICON  := other/redtiger.jpg
 TARGET          := $(PSP_EBOOT_TITLE)
 EXTRA_TARGETS   := EBOOT.PBP
 OBJS            :=          \

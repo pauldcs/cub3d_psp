@@ -13,7 +13,7 @@ PSP_HEAP_THRESHOLD_SIZE_KB(0);
 static void game(t_self *self)
 {
     SceCtrlData pad;
-    
+
     pspDebugScreenInit();
 	sceCtrlSetSamplingCycle(0);
 	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
@@ -27,9 +27,9 @@ static void game(t_self *self)
 int main (int ac, char *av[])
 {
     t_self  self;
+    
     (void)ac;
     (void)av;
-
     memset(&self, 0, sizeof(t_self));
 	setup_call_backs();
     game(&self);
