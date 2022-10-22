@@ -26,6 +26,6 @@ typedef struct s_self {
     t_map   map;
 }   t_self;
 
-void do_moving(t_self *self, SceCtrlData buttonInput);
+void peek_pad(t_self *self, SceCtrlData *pad);
 
 #endif

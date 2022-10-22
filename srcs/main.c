@@ -12,11 +12,15 @@ PSP_HEAP_THRESHOLD_SIZE_KB(0);
 
 static void game(t_self *self)
 {
-    SceCtrlData buttonInput;
-
+    SceCtrlData pad;
+    
+    pspDebugScreenInit();
+	sceCtrlSetSamplingCycle(0);
+	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
     while (running())
     {
-        do_moving(self, &buttonInput);
+        sceCtrlReadBufferPositive(&pad, 1);
+        peek_pad(self, &pad);
     }
 }
 
@@ -27,10 +31,7 @@ int main (int ac, char *av[])
     (void)av;
 
     memset(&self, 0, sizeof(t_self));
-    pspDebugScreenInit(); 
-	setupCallbacks();
-	sceCtrlSetSamplingCycle(0);
-	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+	setup_call_backs();
     game(&self);
     return (EXIT_SUCCESS);
 }

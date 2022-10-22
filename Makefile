@@ -6,7 +6,7 @@ OBJS            :=          \
 	srcs/main.o             \
 	srcs/common/callbacks.o \
 	srcs/common/vram.o      \
-	srcs/do_moving.c        \
+	srcs/controls.o         \
 
 INCDIR    := incs
 CFLAGS    := -g3 -Wall -Wextra -O3

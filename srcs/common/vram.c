@@ -1,6 +1,5 @@
 
 #include "vram.h"
-
 #include "psp/pspge.h"
 #include "psp/pspgu.h"
 
@@ -10,38 +9,33 @@ static unsigned int getMemorySize(unsigned int width, unsigned int height, unsig
 {
 	switch (psm)
 	{
-		case GU_PSM_T4:
-			return (width * height) >> 1;
-
-		case GU_PSM_T8:
-			return width * height;
-
-		case GU_PSM_5650:
-		case GU_PSM_5551:
-		case GU_PSM_4444:
-		case GU_PSM_T16:
-			return 2 * width * height;
-
-		case GU_PSM_8888:
-		case GU_PSM_T32:
-			return 4 * width * height;
-
-		default:
-			return 0;
+		case GU_PSM_T4:		return ((width * height) >> 1);
+		case GU_PSM_T8:		return (width * height);
+		case GU_PSM_5650:   /* none */
+		case GU_PSM_5551:	/* none */
+		case GU_PSM_4444:	/* none */
+		case GU_PSM_T16:	return (2 * width * height);
+		case GU_PSM_8888:	/* none */
+		case GU_PSM_T32:	return (4 * width * height);
+		default:			return (0);
 	}
 }
 
 void* getStaticVramBuffer(unsigned int width, unsigned int height, unsigned int psm)
 {
-	unsigned int memSize = getMemorySize(width,height,psm);
-	void* result = (void*)staticOffset;
-	staticOffset += memSize;
+	unsigned int	memSize = getMemorySize(width,height,psm);
+	void*			result = (void*)staticOffset;
 
-	return result;
+	staticOffset += memSize;
+	return (result);
 }
 
 void* getStaticVramTexture(unsigned int width, unsigned int height, unsigned int psm)
 {
-	void* result = getStaticVramBuffer(width,height,psm);
-	return (void*)(((unsigned int)result) + ((unsigned int)sceGeEdramGetAddr()));
+	void*	result = getStaticVramBuffer(width,height,psm);
+
+	return (
+		(void*)(((unsigned int)result)
+		+ ((unsigned int)sceGeEdramGetAddr()))
+	);
 }
