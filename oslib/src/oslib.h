@@ -202,6 +202,7 @@ while(1)		{
 	//Synchronize to ensure the game runs at 60 fps
 	skip = oslSyncFrame();
 }
+
 \endcode
 */
 #define oslSyncFrame()	oslSyncFrameEx(osl_frameskip,osl_maxFrameskip,osl_vsyncEnabled)

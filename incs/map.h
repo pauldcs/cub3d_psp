@@ -6,8 +6,6 @@
 # define GUIDES_RGB  0x9A1818
 # define V_WALL_RGB  0x7F3335
 # define H_WALL_RGB  0x99585C
-# define FLOOR_RGB   0x34302F
-# define CEIL_RGB    0x3a3a3a
 
 # define MAP_X  91
 # define MAP_Y  25

@@ -1,22 +1,17 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <stddef.h>
 # include "psp/psptypes.h"
 # include "psp/pspctrl.h"
-# include <stdbool.h>
-# include <stddef.h>
 
-#define VERS    1 
-#define REVS    1
+# define SENSITIVITY 0.2
+# define SPEED       16
 
 typedef struct s_map {
     u8   **data;
     u64  max_x;
     u64  max_y;
-    struct s_scene {
-        u32 ceil;
-        u32 floor;
-    }   scene;
 }   t_map;
 
 typedef struct s_self {
@@ -28,6 +23,6 @@ typedef struct s_self {
     t_map   map;
 }   t_self;
 
-bool	start_game(t_self *self);
+void	start_game(t_self *self);
 
 #endif
