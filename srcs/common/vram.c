@@ -3,36 +3,35 @@
 #include "psp/pspge.h"
 #include "psp/pspgu.h"
 
-static unsigned int staticOffset = 0;
-
-static unsigned int getMemorySize(unsigned int width, unsigned int height, unsigned int psm)
+static unsigned int get_memory_size(unsigned int x, unsigned int y, unsigned int pm)
 {
-	switch (psm)
+	switch (pm)
 	{
-		case GU_PSM_T4:		return ((width * height) >> 1);
-		case GU_PSM_T8:		return (width * height);
-		case GU_PSM_5650:   /* none */
-		case GU_PSM_5551:	/* none */
-		case GU_PSM_4444:	/* none */
-		case GU_PSM_T16:	return (2 * width * height);
-		case GU_PSM_8888:	/* none */
-		case GU_PSM_T32:	return (4 * width * height);
+		case GU_PSM_T4:		return ((x * y) >> 1);
+		case GU_PSM_T8:		return (x * y);
+		case GU_PSM_5650:  
+		case GU_PSM_5551:	
+		case GU_PSM_4444:	
+		case GU_PSM_T16:	return (2 * x * y);
+		case GU_PSM_8888:	
+		case GU_PSM_T32:	return (4 * x * y);
 		default:			return (0);
 	}
 }
 
-void* getStaticVramBuffer(unsigned int width, unsigned int height, unsigned int psm)
+void	*get_static_vram_buffer(unsigned int x, unsigned int y, unsigned int pm)
 {
-	unsigned int	memSize = getMemorySize(width,height,psm);
-	void*			result = (void*)staticOffset;
+	static unsigned int	static_offset = 0;
+	unsigned int		mem_size = get_memory_size(x, y, pm);
+	void*				result = (void*)static_offset;
 
-	staticOffset += memSize;
+	static_offset += mem_size;
 	return (result);
 }
 
-void* getStaticVramTexture(unsigned int width, unsigned int height, unsigned int psm)
+void	*get_static_vram_texture(unsigned int x, unsigned int y, unsigned int pm)
 {
-	void*	result = getStaticVramBuffer(width,height,psm);
+	void*	result = get_static_vram_buffer(x, y, pm);
 
 	return (
 		(void*)(((unsigned int)result)

@@ -5,7 +5,6 @@ OBJS            :=          \
 	srcs/main.o             \
 	srcs/common/callbacks.o \
 	srcs/common/vram.o      \
-	srcs/controls.o         \
 
 INCDIR    := incs
 CFLAGS    := -g3 -Wall -Wextra -O3
@@ -18,3 +17,7 @@ LIBS      := -lpspgum -lpspgu -lm
 
 PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
+
+setup: 
+	@. scripts/setup_env.sh
+

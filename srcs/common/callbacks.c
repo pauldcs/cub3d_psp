@@ -1,13 +1,14 @@
 #include "psp/pspkernel.h"
 #include "psp/pspdisplay.h"
 #include "psp/pspdebug.h"
+#include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <time.h>
 
-static int exitRequest = 0;
+static int exitRequest = false;
 
 int running(void)
 {
@@ -29,7 +30,10 @@ int call_back_thread(SceSize args, void *argp)
 
 	(void)args;
 	(void)argp;
-	cbid = sceKernelCreateCallback("Exit Callback", exit_call_back, NULL);
+	cbid = sceKernelCreateCallback(
+			"Exit Callback",
+			exit_call_back,
+			NULL);
 	sceKernelRegisterExitCallback(cbid);
 	sceKernelSleepThreadCB();
 	return (0);
@@ -39,7 +43,13 @@ int setup_call_backs(void)
 {
 	int thid = 0;
 
-	thid = sceKernelCreateThread("update_thread", call_back_thread, 0x11, 0xFA0, 0, 0);
+	thid = sceKernelCreateThread(
+			"update_thread",
+			call_back_thread,
+			0x11,
+			0xFA0,
+			0,
+			0);
 	if(thid >= 0)
 		sceKernelStartThread(thid, 0, 0);
 	return (thid);

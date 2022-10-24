@@ -2,6 +2,7 @@
 # define CUB3D_H
 
 # include "psp/psptypes.h"
+# include "psp/pspctrl.h"
 # include <stdbool.h>
 # include <stddef.h>
 
@@ -13,19 +14,20 @@ typedef struct s_map {
     u64  max_x;
     u64  max_y;
     struct s_scene {
-        ScePspFColor ceil;
-        ScePspFColor floor;
+        u32 ceil;
+        u32 floor;
     }   scene;
 }   t_map;
 
 typedef struct s_self {
-    struct s_player {
+    SceCtrlData pad;
+    struct      s_player {
         ScePspFVector2  pos;
         float           angle;
     }   player;
     t_map   map;
 }   t_self;
 
-void peek_pad(t_self *self, SceCtrlData *pad);
+bool	start_game(t_self *self);
 
 #endif
