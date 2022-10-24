@@ -1,5 +1,10 @@
 {
 	"files.associations": {
-		"string.h": "c"
+		"string.h": "c",
+		"array": "c",
+		"vector": "c",
+		"string": "c",
+		"string_view": "c",
+		"oslib.h": "c"
 	}
 }

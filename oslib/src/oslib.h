@@ -3,7 +3,7 @@
 */
 
 #ifndef _OSLIB_H_
-#define _OSLIB_H_
+# define _OSLIB_H_
 
 #ifdef PSP
 	#include <pspkernel.h>

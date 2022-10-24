@@ -5,8 +5,14 @@
 # include "psp/psptypes.h"
 # include "psp/pspctrl.h"
 
-# define SENSITIVITY 0.2
-# define SPEED       16
+# define SCR_X           480
+# define SCR_Y           272
+# define FOV         1.15192
+# define SENSITIVITY    0.03
+# define SPEED            16
+# define FOV         1.15192
+# define MAP_X            91
+# define MAP_Y            25
 
 typedef struct s_map {
     u8   **data;
@@ -24,5 +30,6 @@ typedef struct s_self {
 }   t_self;
 
 void	start_game(t_self *self);
+void	raycast(t_self *self);
 
 #endif

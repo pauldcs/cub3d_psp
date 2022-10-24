@@ -13,8 +13,8 @@ static void	init_self(t_self *self)
     self->map.data = (u8 **)c3d_map;
     self->map.max_x = MAP_X;
     self->map.max_y = MAP_Y;
-    self->player.pos.x = 10;
-    self->player.pos.y = 10;
+    self->player.pos.x = 3;
+    self->player.pos.y = 3;
     self->player.angle = 1.570796;
 }
 

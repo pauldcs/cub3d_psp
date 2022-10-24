@@ -10,6 +10,7 @@ OSL_CONTROLLER *oslReadKeys()
 	SceCtrlData ctl;
 	SceCtrlData ctlHome;
 
+
 	sceCtrlSetSamplingCycle(0);
 	sceCtrlSetSamplingMode(1);
 
@@ -27,7 +28,7 @@ OSL_CONTROLLER *oslReadKeys()
 		return osl_keys;
 	}
 
-	//Récupère les valeurs du stick
+	//Rï¿½cupï¿½re les valeurs du stick
     if (osl_keys->holdAffectsAnalog && (ctl.Buttons & OSL_KEYMASK_HOLD)){
         osl_keys->analogX = 0;
         osl_keys->analogY = 0;
@@ -60,14 +61,14 @@ OSL_CONTROLLER *oslReadKeys()
 	/*
 		CODE AUTO-REPEAT
 	*/
-	if (osl_keys->autoRepeatInterval > 0)			{					//Auto repeat activé?
-		//Si ça change -> compteur à zéro
+	if (osl_keys->autoRepeatInterval > 0)			{					//Auto repeat activï¿½?
+		//Si ï¿½a change -> compteur ï¿½ zï¿½ro
 		if (osl_keys->lastHeld.value != ctl.Buttons)
 			osl_keys->autoRepeatCounter=0;
 		else			{
 			osl_keys->autoRepeatCounter++;
 			if (osl_keys->autoRepeatCounter >= osl_keys->autoRepeatInit)			{
-				//AutoRepeat déclenché -> déclenchement toutes les autoRepeatInterval coups
+				//AutoRepeat dï¿½clenchï¿½ -> dï¿½clenchement toutes les autoRepeatInterval coups
 				if ((osl_keys->autoRepeatCounter - osl_keys->autoRepeatInit) % osl_keys->autoRepeatInterval == 0)
 					osl_keys->lastHeld.value &= ~osl_keys->autoRepeatMask;
 			}
@@ -99,14 +100,14 @@ OSL_REMOTECONTROLLER *oslReadRemoteKeys()
 	/*
 		CODE AUTO-REPEAT
 	*/
-	if (osl_remotekeys->autoRepeatInterval > 0)			{					//Auto repeat activé?
-		//Si ça change -> compteur à zéro
+	if (osl_remotekeys->autoRepeatInterval > 0)			{					//Auto repeat activï¿½?
+		//Si ï¿½a change -> compteur ï¿½ zï¿½ro
 		if (osl_remotekeys->lastHeld.value != remote)
 			osl_remotekeys->autoRepeatCounter=0;
 		else			{
 			osl_remotekeys->autoRepeatCounter++;
 			if (osl_remotekeys->autoRepeatCounter >= osl_remotekeys->autoRepeatInit)			{
-				//AutoRepeat déclenché -> déclenchement toutes les autoRepeatInterval coups
+				//AutoRepeat dï¿½clenchï¿½ -> dï¿½clenchement toutes les autoRepeatInterval coups
 				if ((osl_remotekeys->autoRepeatCounter - osl_remotekeys->autoRepeatInit) % osl_remotekeys->autoRepeatInterval == 0)
 					osl_remotekeys->lastHeld.value &= ~osl_remotekeys->autoRepeatMask;
 			}
