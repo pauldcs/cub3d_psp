@@ -22,9 +22,16 @@ void peek_keys(t_self *self)
     sceCtrlPeekBufferPositive(&self->pad, 1);
 
 	if (self->pad.Buttons & PSP_CTRL_CROSS)
+	{
+		if (self->player.stamina <= 0)
+			return ;
+		self->player.stamina--;
 		speed = SPEED / 2;
-	else
+	} else {
+		if (self->player.stamina < 100)
+			self->player.stamina++;
 		speed = SPEED;
+	}
 	if (self->pad.Buttons & PSP_CTRL_DOWN)
 		__move(self,
             -cosf(self->player.angle) / speed,

@@ -1,4 +1,4 @@
-PSP_EBOOT_TITLE := cub3D_PSP
+PSP_EBOOT_TITLE := cub3D_psp
 TARGET          := $(PSP_EBOOT_TITLE)
 EXTRA_TARGETS   := EBOOT.PBP
 OBJS            :=          \
@@ -23,6 +23,4 @@ LIBS      := -lm -lstdc++ \
 PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
 
-setup: 
-	@. scripts/setup_env.sh
 

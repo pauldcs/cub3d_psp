@@ -19,7 +19,7 @@ int osl_currentAlphaEffect;
 OSL_COLOR osl_currentAlphaCoeff, osl_currentAlphaCoeff2;
 int osl_colorKeyEnabled, osl_colorKeyValue;
 OSL_IMAGE osl_defaultBufferImage, osl_secondaryBufferImage, *osl_curBuf;
-//Peut être mis à 0 pour gagner de la place, mais ce n'est pas garanti que tout fonctionne (particulièrement si le mode de texture n'est pas repeat).
+//Peut ï¿½tre mis ï¿½ 0 pour gagner de la place, mais ce n'est pas garanti que tout fonctionne (particuliï¿½rement si le mode de texture n'est pas repeat).
 int osl_alignBuffer = 3;
 int osl_doubleBuffer=1;
 int osl_textureEnabled = 1;
@@ -63,14 +63,14 @@ void oslSetAlpha2(u32 effect, u32 coeff1, u32 coeff2)		{
 			sceGuAmbientColor(coeff1);
 			osl_currentAlphaCoeff = coeff1;
 		}
-		else if (effet == OSL_FX_ADD)	{				//fxCoeff: opacité de l'objet, fxCoeffSrc: modifie la source
+		else if (effet == OSL_FX_ADD)	{				//fxCoeff: opacitï¿½ de l'objet, fxCoeffSrc: modifie la source
 			sceGuBlendFunc(GU_ADD, GU_SRC_ALPHA,GU_FIX, 0, coeff2);
 			sceGuTexFunc(GU_TFX_MODULATE, GU_TCC_RGBA);
 			sceGuAmbientColor(coeff1);
 			osl_currentAlphaCoeff = coeff1;
 			osl_currentAlphaCoeff2 = coeff2;
 		}
-		else if (effet == OSL_FX_SUB)		{			//fxCoeff: opacité de l'objet, fxCoeffSrc: modifie la source
+		else if (effet == OSL_FX_SUB)		{			//fxCoeff: opacitï¿½ de l'objet, fxCoeffSrc: modifie la source
 			sceGuBlendFunc(GU_REVERSE_SUBTRACT, GU_SRC_ALPHA,GU_FIX, 0, coeff2);
 			sceGuTexFunc(GU_TFX_MODULATE, GU_TCC_RGBA);
 			sceGuAmbientColor(coeff1);
@@ -192,7 +192,7 @@ int oslConvertColorEx(OSL_PALETTE *p, int pfDst, int pfSrc, int color)		{
 }
 
 
-//Dessine une tile de la texture sélectionnée. Eviter d'utiliser à l'extérieur.   - NOT USED ANYMORE
+//Dessine une tile de la texture sï¿½lectionnï¿½e. Eviter d'utiliser ï¿½ l'extï¿½rieur.   - NOT USED ANYMORE
 void oslDrawTile(int u, int v, int x, int y, int tX, int tY)
 {
 	OSL_FAST_VERTEX *vertices;
@@ -213,10 +213,8 @@ void oslDrawTile(int u, int v, int x, int y, int tX, int tY)
 	sceGuDrawArray(GU_SPRITES,GU_TEXTURE_16BIT|GU_VERTEX_16BIT|GU_TRANSFORM_2D,2,0,vertices);
 }
 
-
-
 void oslStartDrawing()		{
-	//Dessin déjà commencé?
+	//Dessin dï¿½jï¿½ commencï¿½?
 	if (osl_isDrawingStarted)
 		return;
 	osl_isDrawingStarted = 1;
@@ -354,7 +352,7 @@ void oslInitGfx(int pixelFormat, int bDoubleBuffer) {
 
 	//Initialise le gestionnaire de VRAM
 	oslVramMgrInit();
-	//Définit le début de la VRAM
+	//Dï¿½finit le dï¿½but de la VRAM
 	oslVramMgrSetParameters((void*)baseAdr, (u32)OSL_UVRAM_END - (u32)baseAdr);
 
 	/*sceGuDisable(GU_DEPTH_TEST);
@@ -376,7 +374,7 @@ void oslInitGfx(int pixelFormat, int bDoubleBuffer) {
 	sceDisplayWaitVblankStart();
 	sceGuDisplay(1);
 
-	//Remplit l'image par défaut (informations en lecture seule)
+	//Remplit l'image par dï¿½faut (informations en lecture seule)
 	memset(&osl_defaultBufferImage, 0, sizeof(osl_defaultBufferImage));
 	osl_defaultBufferImage.sizeX = 480;
 	osl_defaultBufferImage.sizeY = 272;
@@ -390,7 +388,7 @@ void oslInitGfx(int pixelFormat, int bDoubleBuffer) {
 	osl_defaultBufferImage.totalSize = (0x22000 * osl_pixelWidth[pixelFormat])>>3;
 	oslSetImageTile(&osl_defaultBufferImage, 0,0, 480,272);
 	osl_curBuf = &osl_defaultBufferImage;
-	//Le buffer secondaire est identique, à un détail près (le buffer)
+	//Le buffer secondaire est identique, ï¿½ un dï¿½tail prï¿½s (le buffer)
 	memcpy(&osl_secondaryBufferImage, &osl_defaultBufferImage, sizeof(osl_secondaryBufferImage));
 	osl_secondaryBufferImage.data = osl_curDispBuf;
 	//A partir d'ici, on peut afficher des messages (fatal error et cie)
@@ -405,7 +403,7 @@ void oslInitGfx(int pixelFormat, int bDoubleBuffer) {
 #if 0	//<-- STAS: this algorithm has different side effects for single and double buffering modes
 void oslSwapBuffers()
 {
-	//Seulement si le double buffer est activé
+	//Seulement si le double buffer est activï¿½
 	if (osl_doubleBuffer)			{
 		oslSetDrawBuffer(OSL_DEFAULT_BUFFER);
 #ifdef PSP
@@ -413,11 +411,11 @@ void oslSwapBuffers()
 		osl_secondaryBufferImage.data = osl_curDispBuf;
 		osl_curDrawBuf = oslAddVramPrefixPtr(sceGuSwapBuffers());
 #else
-		//Sur PC, rien de tout ça
+		//Sur PC, rien de tout ï¿½a
 		oslGetUncachedPtr(sceGuSwapBuffers());
 #endif
 	}
-	//Met à jour l'image, assumant qu'il n'y a que l'adresse qui change entre les deux buffers
+	//Met ï¿½ jour l'image, assumant qu'il n'y a que l'adresse qui change entre les deux buffers
 	osl_defaultBufferImage.data = osl_curDrawBuf;
 }
 

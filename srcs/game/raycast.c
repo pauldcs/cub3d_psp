@@ -4,6 +4,7 @@
 
 void	raycast(t_self *self)
 {
+	int		osc = 256;
 	int		side = 0;
 	float	line_len;
 	float	current_angle;
@@ -71,9 +72,10 @@ void	raycast(t_self *self)
 			line_len = SCR_Y / (r.len.y - r.delta.y)
 				/ cosf(current_angle - self->player.angle);		
 
+		osc+=1;
 		draw_line(
 			i, -line_len / 2 + SCR_Y / 2, 
 			i, line_len / 2 + SCR_Y / 2,
-			side == 0 ? 0xff35337F : 0xff5C5899);
+			side == 0 ? 0xff35337f : 0xff5c5899);
 	}
 }

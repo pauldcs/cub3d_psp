@@ -632,7 +632,6 @@ void oslDrawChar(int x, int y, unsigned char c)
         intraFontPrint(osl_curFont->intra, x, y, temp);
     }
 }
-
 void oslDrawString(int x, int y, const char *str)
 {
     if (!osl_curFont)								//<-- STAS: it would nice to check it here

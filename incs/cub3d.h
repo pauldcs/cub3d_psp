@@ -25,6 +25,7 @@ typedef struct s_self {
         ScePspFVector2  pos;
         float           angle;
         int             health;
+        int             stamina;
     }   player;
     t_map   map;
 }   t_self;
