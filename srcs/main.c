@@ -16,6 +16,7 @@ static void	init_self(t_self *self)
     self->player.pos.x = 3;
     self->player.pos.y = 3;
     self->player.angle = 1.570796;
+    self->player.health = 100;
 }
 
 int main(void)

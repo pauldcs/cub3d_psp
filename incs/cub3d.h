@@ -7,10 +7,9 @@
 
 # define SCR_X           480
 # define SCR_Y           272
-# define FOV         1.15192
-# define SENSITIVITY    0.03
+# define SENSITIVITY    0.04
 # define SPEED            16
-# define FOV         1.15192
+# define FOV        1.047198
 # define MAP_X            91
 # define MAP_Y            25
 
@@ -25,11 +24,14 @@ typedef struct s_self {
     struct      s_player {
         ScePspFVector2  pos;
         float           angle;
+        int             health;
     }   player;
     t_map   map;
 }   t_self;
 
 void	start_game(t_self *self);
 void	raycast(t_self *self);
+void    peek_keys(t_self *self);
+void    draw_line(int x0, int y0, int x1, int y1, int c);
 
 #endif

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH_TO_GAME=/Volumes/Untitled/PSP/GAME/CUB
+PATH_TO_GAME=/Volumes/Untitled/PSP/GAME/CUB3D
 EBOOT=EBOOT.PBP
 set -x
 rm -f $PATH_TO_GAME$EBOOT

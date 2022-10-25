@@ -3,7 +3,12 @@ TARGET          := $(PSP_EBOOT_TITLE)
 EXTRA_TARGETS   := EBOOT.PBP
 OBJS            :=          \
 	srcs/main.o             \
+	srcs/common/callbacks.o \
+	srcs/common/vram.o      \
 	srcs/game/start_game.o  \
+	srcs/game/draw_line.o   \
+	srcs/game/peek_keys.o   \
+	srcs/game/raycast.o   \
 
 INCDIR    := incs
 CFLAGS    := -g3 -Wall -Wextra -O3

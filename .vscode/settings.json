@@ -5,6 +5,7 @@
 		"vector": "c",
 		"string": "c",
 		"string_view": "c",
-		"oslib.h": "c"
+		"oslib.h": "c",
+		"stdbool.h": "c"
 	}
 }

@@ -1,6 +1,7 @@
 #include "psp/pspkernel.h"
 #include "psp/pspdisplay.h"
 #include "psp/pspdebug.h"
+#include <stdbool.h>
 
 static int exitRequest = false;
 
